@@ -95,6 +95,54 @@
   }
 }
 
+//Products
+.products-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+  padding: 2rem 4rem;
+
+  .product{
+    // overflow: hidden;
+  }
+
+  .image{
+    position: relative;
+    width: 400px;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .image-img{
+    display: block;
+    width: 300px;
+    height: 300px;
+    object-fit: cover; 
+  }
+
+  .content{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: coral;
+    display: flex;
+    align-items: center;
+    padding: .7rem;
+    cursor: pointer;
+    transform: translateX(128px);
+    visibility: hidden;
+    transition: all .5s;
+    i{
+      margin-right: .3rem;
+    }
+  }
+
+  .image:hover .content{
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+}
 
 
 
@@ -102,4 +150,8 @@
 .container{
   width: 90%;
   margin: 0 auto;
+}
+
+.text-center{
+  text-align: center;
 }
