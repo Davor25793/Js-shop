@@ -1,0 +1,36 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+
+.navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgb(0,0,0);
+  color: #fff;
+  padding: 1rem;
+
+  &-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo{
+    width: 200px;
+  }
+}
+
+
+
+
+//Utilities
+.container{
+  width: 90%;
+  margin: 0 auto;
+}
