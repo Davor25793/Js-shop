@@ -51,3 +51,10 @@ prev.addEventListener('click', () => {
 if(auto){
   slideInterval = setInterval(nextSlide, intervalTime)
 }
+
+//Variables
+const cartBtn = document.querySelector('.cartBtn');
+
+cartBtn.addEventListener('click', () => {
+  console.log('clicked')
+})
