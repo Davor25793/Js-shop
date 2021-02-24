@@ -58,8 +58,8 @@ const cartBtn = document.querySelector('.cartBtn');
 const totalItems = document.querySelector('.total-items');
 //Products CONTAINER
 const productsContainer = document.querySelector('.products-container')
-//Add to the cart button
-const addToCart = document.querySelector('.add-item');
+//Add to the cart buttons -- event delegation 
+// const addToCartBtns = document.querySelectorAll('.add-item');
 //Close cart
 const closeCart = document.querySelector('.cart-close');
 //CART CONTAINER
@@ -71,9 +71,12 @@ const amount = document.querySelector('.item-amount')
 //CART DOM TOTAL
 const cartDomTotal = document.querySelector('.cart-total');
 
+// console.log(addToCartBtn);
+
 //Cart 
 let cart = []
 
+let buttonsDOM = []
 
 class Items{
 
@@ -107,12 +110,30 @@ class UI{
      productsContainer.innerHTML = output;
    })
   }
+
+
+  getBagButtons(){
+    //Turn node list into an array
+    const buttons = [...document.querySelectorAll('.add-item')];
+    
+    buttons.forEach(button => {
+      let id = button.dataset.id;
+      console.log(id)
+    })
+  }
 }
 
 
 class Storage{
-  static addToLocalStorage(items){
+  static addItemsToLs(items){
    localStorage.setItem('items', JSON.stringify(items))
+  }
+
+  static getItem(id){
+    //Uzimaš items iz local storaga
+    let items = JSON.parse(localStorage.getItem('items'))
+    //Find specific item from ls
+    return items.find(item => item.id === id);
   }
 }
 
@@ -121,11 +142,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const items = new Items()
   const ui = new UI()
 
+
   items.getItems()
     .then(items => {
         ui.showItems(items)
-        Storage.addToLocalStorage(items)
+        Storage.addItemsToLs(items)
       })
+    .then(() => {
+      ui.getBagButtons()
+    })
     .catch(err => console.log(err))
 
 
