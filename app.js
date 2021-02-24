@@ -54,7 +54,81 @@ if(auto){
 
 //Variables
 const cartBtn = document.querySelector('.cartBtn');
+//Up in navbar
+const totalItems = document.querySelector('.total-items');
+//Products CONTAINER
+const productsContainer = document.querySelector('.products-container')
+//Add to the cart button
+const addToCart = document.querySelector('.add-item');
+//Close cart
+const closeCart = document.querySelector('.cart-close');
+//CART CONTAINER
+const cartContainer = document.querySelector('.cart-content');
+//Remove item 
+const removeItem = document.querySelector('.remove-item');
+//Item amount
+const amount = document.querySelector('.item-amount')
+//CART DOM TOTAL
+const cartDomTotal = document.querySelector('.cart-total');
 
-cartBtn.addEventListener('click', () => {
-  console.log('clicked')
+//Cart 
+let cart = []
+
+
+class Items{
+
+  async getItems(){
+    const response = await fetch('items.json')
+    const data = await response.json();
+    return data;
+  }
+}
+
+
+class UI{
+  showItems(data){
+   let output = ''
+    
+   //Loop through json file
+   data.forEach(item => {
+     output += `
+     <div class="product">
+      <div class="image">
+       <img src=${item.img} alt="" class="image-img">
+       <button class="add-item" data-id=${item.id}>
+         <i class="fas fa-shopping-cart"></i>
+           Add to the cart
+       </button>
+      </div>
+      <h3>${item.name}</h3>
+       <h4>$${item.price}</h4>
+      </div>
+     `
+     productsContainer.innerHTML = output;
+   })
+  }
+}
+
+
+class Storage{
+  static addToLocalStorage(items){
+   localStorage.setItem('items', JSON.stringify(items))
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const items = new Items()
+  const ui = new UI()
+
+  items.getItems()
+    .then(items => {
+        ui.showItems(items)
+        Storage.addToLocalStorage(items)
+      })
+    .catch(err => console.log(err))
+
+
 })
+
+

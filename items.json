@@ -1,52 +1,50 @@
-{
-  "items": [
+[
     {
       "id": 1,
       "name": "Nike Air Max Invigor",
-      "price": "127$",
+      "price": "127",
       "img": "./images/picture-1.jpeg"
     },
     {
       "id": 2,
       "name": "Nike Court Vintage Premium",
-      "price": "78$",
+      "price": "78",
       "img": "./images/picture-2.jpeg"
     },
     {
       "id": 3,
       "name": "Nike Reposto",
-      "price": "98$",
+      "price": "98",
       "img": "./images/picture-3.jpeg"
     },
     {
       "id": 4,
       "name": "Air Max Excee",
-      "price": "210$",
+      "price": "210",
       "img": "./images/picture-4.jpeg"
     },
     {
       "id": 5,
       "name": "Cortez",
-      "price": "149$",
+      "price": "149",
       "img": "./images/picture-5.jpeg"
     },
     {
       "id": 6,
       "name": "Zoom",
-      "price": "270$",
+      "price": "270",
       "img": "./images/picture-6.jpeg"
     },
     {
       "id": 7,
       "name": "Air Force",
-      "price": "150$",
-      "img": "./images/picture-7.jpeg"
+      "price": "150",
+      "img": "./images/picture-7.jpg"
     },
     {
       "id": 8,
       "name": "Core-text",
-      "price": "200$",
+      "price": "200",
       "img": "./images/picture-8.jpeg"
     }
-  ]
-}
+]
