@@ -76,8 +76,6 @@ const cartDomTotal = document.querySelector('.cart-total');
 //Cart 
 let cart = []
 
-let buttonsDOM = []
-
 class Items{
 
   async getItems(){
@@ -89,11 +87,11 @@ class Items{
 
 
 class UI{
-  showItems(data){
+  showItems(items){ //Možda je ovo bio error Davore, vidjet ćeš i sam
    let output = ''
     
    //Loop through json file
-   data.forEach(item => {
+   items.forEach(item => {
      output += `
      <div class="product">
       <div class="image">
@@ -111,30 +109,14 @@ class UI{
    })
   }
 
-
-  getBagButtons(){
-    //Turn node list into an array
-    const buttons = [...document.querySelectorAll('.add-item')];
-    
-    buttons.forEach(button => {
-      let id = button.dataset.id;
-      console.log(id)
-    })
-  }
 }
 
 
-class Storage{
-  static addItemsToLs(items){
+class Storage{   //Škicni ovdje, jer ovdje je bio data umjesto items!!
+  static addItemsToLs(items){ 
    localStorage.setItem('items', JSON.stringify(items))
   }
 
-  static getItem(id){
-    //Uzimaš items iz local storaga
-    let items = JSON.parse(localStorage.getItem('items'))
-    //Find specific item from ls
-    return items.find(item => item.id === id);
-  }
 }
 
 
@@ -148,12 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ui.showItems(items)
         Storage.addItemsToLs(items)
       })
-    .then(() => {
-      ui.getBagButtons()
-    })
-    .catch(err => console.log(err))
-
-
+      .catch(err => console.log(err))
 })
 
 
